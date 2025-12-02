@@ -1,162 +1,682 @@
 [
   {
+    "id": "c_common_cold",
     "name": "Common Cold",
-    "description": "Runny nose, cough, mild fever, sore throat, sneezing, nasal congestion"
+    "description": "Runny nose, cough, mild fever, sore throat, sneezing, nasal congestion",
+    "aliases": ["common cold", "viral rhinitis", "upper respiratory infection"],
+    "icd_code": "J00",
+    "common_symptoms": ["runny nose", "cough", "mild fever", "sore throat", "sneezing", "nasal congestion"],
+    "red_flags": ["high fever", "severe difficulty breathing", "stridor", "confusion"],
+    "severity_score": 0.15,
+    "urgency": "low",
+    "selfcare": ["rest", "fluids", "paracetamol/ibuprofen for fever", "saline nasal drops"],
+    "escalate_when": ["shortness of breath", "high persistent fever", "worsening after 7 days"],
+    "follow_up_questions": [
+      { "id": "cc_q1", "text": "Do you have a high fever or difficulty breathing?" },
+      { "id": "cc_q2", "text": "How many days have your symptoms been present?" }
+    ]
   },
   {
+    "id": "c_influenza",
     "name": "Influenza (Flu)",
-    "description": "High fever, body aches, chills, headache, dry cough, fatigue"
+    "description": "High fever, body aches, chills, headache, dry cough, fatigue",
+    "aliases": ["influenza", "flu", "seasonal flu"],
+    "icd_code": "J10",
+    "common_symptoms": ["high fever", "body aches", "chills", "headache", "dry cough", "fatigue"],
+    "red_flags": ["severe shortness of breath", "confusion", "chest pain"],
+    "severity_score": 0.6,
+    "urgency": "moderate",
+    "selfcare": ["rest", "fluids", "antipyretics", "seek GP for antivirals if early/high risk"],
+    "escalate_when": ["difficulty breathing", "severe chest pain", "altered mental status"],
+    "follow_up_questions": [
+      { "id": "flu_q1", "text": "Have your symptoms come on suddenly and are they severe?" },
+      { "id": "flu_q2", "text": "Are you in a high-risk group (pregnant, elderly, chronic disease)?" }
+    ]
   },
   {
+    "id": "c_covid19",
     "name": "COVID-19",
-    "description": "Fever, dry cough, fatigue, loss of taste or smell, shortness of breath"
+    "description": "Fever, dry cough, fatigue, loss of taste or smell, shortness of breath",
+    "aliases": ["covid", "covid-19", "coronavirus infection", "sars-cov-2 infection"],
+    "icd_code": "U07.1",
+    "common_symptoms": ["fever", "dry cough", "fatigue", "loss of taste", "loss of smell", "shortness of breath"],
+    "red_flags": ["severe shortness of breath", "confusion", "low oxygen saturation"],
+    "severity_score": 0.7,
+    "urgency": "high",
+    "selfcare": ["isolate", "rest", "fluids", "seek testing and monitor breathing"],
+    "escalate_when": ["breathlessness, chest pain, oxygen saturation <94%"],
+    "follow_up_questions": [
+      { "id": "covid_q1", "text": "Have you noticed a new loss of taste or smell?" },
+      { "id": "covid_q2", "text": "Are you struggling to breathe or feeling very breathless?" }
+    ]
   },
   {
+    "id": "c_migraine",
     "name": "Migraine",
-    "description": "Severe headache, nausea, vomiting, sensitivity to light or sound, throbbing pain"
+    "description": "Severe headache, nausea, vomiting, sensitivity to light or sound, throbbing pain",
+    "aliases": ["migraine", "migraine headache"],
+    "icd_code": "G43",
+    "common_symptoms": ["severe headache", "nausea", "vomiting", "sensitivity to light", "sensitivity to sound", "throbbing pain"],
+    "red_flags": ["sudden worst headache (thunderclap)", "focal neurological signs", "fever with neck stiffness"],
+    "severity_score": 0.5,
+    "urgency": "moderate",
+    "selfcare": ["rest in dark room", "hydration", "analgesics as per guidance"],
+    "escalate_when": ["sudden severe headache, neurological deficit, persistent vomiting"],
+    "follow_up_questions": [
+      { "id": "mig_q1", "text": "Is the pain throbbing and one-sided?" },
+      { "id": "mig_q2", "text": "Do lights or sounds make the pain worse?" }
+    ]
   },
   {
+    "id": "c_tension_headache",
     "name": "Tension Headache",
-    "description": "Dull head pressure, tight band sensation around head, stress-related headache"
+    "description": "Dull head pressure, tight band sensation around head, stress-related headache",
+    "aliases": ["tension headache", "stress headache"],
+    "icd_code": "G44.2",
+    "common_symptoms": ["dull head pressure", "tight band sensation", "neck tightness", "stress-related pain"],
+    "red_flags": ["sudden severe headache", "neurological signs"],
+    "severity_score": 0.2,
+    "urgency": "low",
+    "selfcare": ["stress management", "analgesia", "rest", "posture correction"],
+    "escalate_when": ["sudden severe headache, changes in vision or weakness"],
+    "follow_up_questions": [
+      { "id": "tens_q1", "text": "Is the pain a constant dull pressure across both sides of the head?" },
+      { "id": "tens_q2", "text": "Is there any neurological change like weakness or slurred speech?" }
+    ]
   },
   {
+    "id": "c_sinusitis",
     "name": "Sinusitis",
-    "description": "Facial pressure, nasal congestion, thick mucus, headache, reduced sense of smell"
+    "description": "Facial pressure, nasal congestion, thick mucus, headache, reduced sense of smell",
+    "aliases": ["sinus infection", "sinusitis"],
+    "icd_code": "J01",
+    "common_symptoms": ["facial pressure", "nasal congestion", "thick nasal mucus", "headache", "reduced smell"],
+    "red_flags": ["severe headache with neurological signs", "orbital swelling", "high fever"],
+    "severity_score": 0.45,
+    "urgency": "low",
+    "selfcare": ["nasal saline", "steam inhalation", "analgesia"],
+    "escalate_when": ["severe periorbital swelling, persistent high fever, neurological symptoms"],
+    "follow_up_questions": [
+      { "id": "sinus_q1", "text": "Is the facial pain worse on bending forward or when pressing over the sinuses?" },
+      { "id": "sinus_q2", "text": "Do you have severe swelling around the eyes or vision changes?" }
+    ]
   },
   {
+    "id": "c_gastro_reflux",
     "name": "Acid Reflux (GERD)",
-    "description": "Burning chest pain, sour taste, regurgitation, worsening after meals"
+    "description": "Burning chest pain, sour taste, regurgitation, worsening after meals",
+    "aliases": ["gerd", "acid reflux", "gastroesophageal reflux disease"],
+    "icd_code": "K21",
+    "common_symptoms": ["burning chest pain", "sour taste", "regurgitation", "worse after meals"],
+    "red_flags": ["persistent chest pain worrying for cardiac cause", "weight loss", "anemia"],
+    "severity_score": 0.35,
+    "urgency": "low",
+    "selfcare": ["avoid late meals", "antacids", "elevate head of bed", "dietary modifications"],
+    "escalate_when": ["signs of GI bleeding, weight loss, persistent severe symptoms"],
+    "follow_up_questions": [
+      { "id": "gerd_q1", "text": "Does the burning occur after eating or when lying down?" },
+      { "id": "gerd_q2", "text": "Do you have vomiting blood or black stools?" }
+    ]
   },
   {
+    "id": "c_gastritis",
     "name": "Gastritis",
-    "description": "Upper abdominal pain, nausea, bloating, indigestion, fullness after meals"
+    "description": "Upper abdominal pain, nausea, bloating, indigestion, fullness after meals",
+    "aliases": ["gastritis", "stomach inflammation"],
+    "icd_code": "K29",
+    "common_symptoms": ["upper abdominal pain", "nausea", "bloating", "indigestion", "fullness after meals"],
+    "red_flags": ["vomiting blood", "severe persistent pain", "signs of perforation"],
+    "severity_score": 0.4,
+    "urgency": "low",
+    "selfcare": ["avoid NSAIDs/alcohol", "small meals", "antacids or PPI if advised"],
+    "escalate_when": ["bleeding, severe persistent pain, fever"],
+    "follow_up_questions": [
+      { "id": "gastri_q1", "text": "Are you vomiting blood or noticing black stools?" },
+      { "id": "gastri_q2", "text": "Is the pain severe and persistent despite self-care?" }
+    ]
   },
   {
+    "id": "c_food_poisoning",
     "name": "Food Poisoning",
-    "description": "Vomiting, diarrhea, stomach cramps, fever, nausea after eating contaminated food"
+    "description": "Vomiting, diarrhea, stomach cramps, fever, nausea after eating contaminated food",
+    "aliases": ["food poisoning", "gastroenteritis from food"],
+    "icd_code": "A05",
+    "common_symptoms": ["vomiting", "diarrhea", "stomach cramps", "fever", "nausea after eating"],
+    "red_flags": ["bloody diarrhea", "severe dehydration", "persistent vomiting"],
+    "severity_score": 0.55,
+    "urgency": "moderate",
+    "selfcare": ["oral rehydration", "rest", "avoid solid food briefly"],
+    "escalate_when": ["unable to keep fluids, bloody stools, high fever"],
+    "follow_up_questions": [
+      { "id": "fp_q1", "text": "Do you have bloody diarrhea or are you unable to keep fluids down?" },
+      { "id": "fp_q2", "text": "When did the symptoms start after eating?" }
+    ]
   },
   {
+    "id": "c_ibs",
     "name": "Irritable Bowel Syndrome (IBS)",
-    "description": "Abdominal cramps, bloating, gas, irregular bowel habits, stress-triggered symptoms"
+    "description": "Abdominal cramps, bloating, gas, irregular bowel habits, stress-triggered symptoms",
+    "aliases": ["ibs", "irritable bowel syndrome"],
+    "icd_code": "K58",
+    "common_symptoms": ["abdominal cramps", "bloating", "gas", "irregular bowel habits", "symptoms triggered by stress"],
+    "red_flags": ["unintentional weight loss", "rectal bleeding", "nocturnal symptoms"],
+    "severity_score": 0.3,
+    "urgency": "low",
+    "selfcare": ["dietary changes (low FODMAP)", "fiber adjustment", "stress reduction"],
+    "escalate_when": ["blood in stool, weight loss, persistent severe symptoms"],
+    "follow_up_questions": [
+      { "id": "ibs_q1", "text": "Do your symptoms improve after passing stool?" },
+      { "id": "ibs_q2", "text": "Have you noticed blood in stools or unintended weight loss?" }
+    ]
   },
   {
+    "id": "c_appendicitis",
     "name": "Appendicitis",
-    "description": "Severe right lower abdominal pain, nausea, fever, loss of appetite"
+    "description": "Severe right lower abdominal pain, nausea, fever, loss of appetite",
+    "aliases": ["appendicitis", "inflamed appendix"],
+    "icd_code": "K35",
+    "common_symptoms": ["severe right lower abdominal pain", "nausea", "fever", "loss of appetite"],
+    "red_flags": ["peritonitis", "severe fever", "rigid abdomen"],
+    "severity_score": 0.9,
+    "urgency": "high",
+    "selfcare": ["seek urgent surgical assessment"],
+    "escalate_when": ["worsening abdominal pain, fever, vomiting, signs of peritonitis"],
+    "follow_up_questions": [
+      { "id": "app_q1", "text": "Did the pain start centrally and move to the lower right side?" },
+      { "id": "app_q2", "text": "Are you vomiting and unable to tolerate fluids?" }
+    ]
   },
   {
+    "id": "c_pneumonia",
     "name": "Pneumonia",
-    "description": "Cough with phlegm, fever, chest discomfort, difficulty breathing, fatigue"
+    "description": "Cough with phlegm, fever, chest discomfort, difficulty breathing, fatigue",
+    "aliases": ["pneumonia", "lung infection"],
+    "icd_code": "J18",
+    "common_symptoms": ["cough with phlegm", "fever", "chest discomfort", "difficulty breathing", "fatigue"],
+    "red_flags": ["rapid breathing", "low oxygen", "confusion"],
+    "severity_score": 0.85,
+    "urgency": "high",
+    "selfcare": ["seek medical evaluation (antibiotics if bacterial)", "rest", "fluids"],
+    "escalate_when": ["shortness of breath, oxygen saturation low, sepsis signs"],
+    "follow_up_questions": [
+      { "id": "pneu_q1", "text": "Are you short of breath or breathing much faster than usual?" },
+      { "id": "pneu_q2", "text": "Is your cough producing green or bloody sputum?" }
+    ]
   },
   {
+    "id": "c_bronchitis",
     "name": "Bronchitis",
-    "description": "Persistent cough, chest tightness, wheezing, mucus production"
+    "description": "Persistent cough, chest tightness, wheezing, mucus production",
+    "aliases": ["bronchitis", "acute bronchitis"],
+    "icd_code": "J20",
+    "common_symptoms": ["persistent cough", "chest tightness", "wheezing", "mucus production"],
+    "red_flags": ["severe shortness of breath", "hemoptysis", "high fever"],
+    "severity_score": 0.45,
+    "urgency": "low",
+    "selfcare": ["fluids", "rest", "cough hygiene", "see GP if prolonged"],
+    "escalate_when": ["severe breathlessness, blood in sputum, prolonged symptoms"],
+    "follow_up_questions": [
+      { "id": "bronch_q1", "text": "Is your breathing much worse or do you have blood in your cough?" },
+      { "id": "bronch_q2", "text": "How long have you had the cough?" }
+    ]
   },
   {
+    "id": "c_asthma_attack",
     "name": "Asthma Attack",
-    "description": "Shortness of breath, wheezing, chest tightness, coughing, triggered by allergens"
+    "description": "Shortness of breath, wheezing, chest tightness, coughing, triggered by allergens",
+    "aliases": ["asthma exacerbation", "acute asthma", "asthma attack"],
+    "icd_code": "J45",
+    "common_symptoms": ["shortness of breath", "wheezing", "chest tightness", "coughing"],
+    "red_flags": ["unable to speak full sentences", "cyanosis", "silent chest"],
+    "severity_score": 0.9,
+    "urgency": "high",
+    "selfcare": ["use rescue inhaler per action plan", "sit upright", "seek urgent care if not improving"],
+    "escalate_when": ["rescue inhaler ineffective", "worsening breathlessness", "fainting"],
+    "follow_up_questions": [
+      { "id": "asth_q1", "text": "Has your rescue inhaler helped or not at all?" },
+      { "id": "asth_q2", "text": "Are you able to speak in full sentences?" }
+    ]
   },
   {
+    "id": "c_allergic_rhinitis",
     "name": "Allergic Rhinitis",
-    "description": "Sneezing, itchy eyes, runny nose, nasal congestion triggered by allergens"
+    "description": "Sneezing, itchy eyes, runny nose, nasal congestion triggered by allergens",
+    "aliases": ["hay fever", "allergic rhinitis"],
+    "icd_code": "J30",
+    "common_symptoms": ["sneezing", "itchy eyes", "runny nose", "nasal congestion"],
+    "red_flags": ["breathing difficulty", "anaphylaxis signs"],
+    "severity_score": 0.2,
+    "urgency": "low",
+    "selfcare": ["antihistamines", "avoid triggers", "nasal saline"],
+    "escalate_when": ["shortness of breath", "facial or throat swelling"],
+    "follow_up_questions": [
+      { "id": "ar_q1", "text": "Are you short of breath or is there swelling of the face or throat?" },
+      { "id": "ar_q2", "text": "Are symptoms seasonal or related to a trigger?" }
+    ]
   },
   {
+    "id": "c_uti",
     "name": "Urinary Tract Infection",
-    "description": "Burning urination, increased frequency, cloudy urine, lower abdominal pain"
+    "description": "Burning urination, increased frequency, cloudy urine, lower abdominal pain",
+    "aliases": ["uti", "urinary tract infection"],
+    "icd_code": "N39.0",
+    "common_symptoms": ["burning urination", "increased frequency", "cloudy urine", "lower abdominal pain"],
+    "red_flags": ["high fever", "flank pain", "vomiting", "pregnancy complications"],
+    "severity_score": 0.6,
+    "urgency": "moderate",
+    "selfcare": ["increase fluids", "seek GP for antibiotics if symptoms severe or persistent"],
+    "escalate_when": ["fever >38°C", "flank pain", "vomiting", "pregnancy"],
+    "follow_up_questions": [
+      { "id": "uti_q1", "text": "Do you have burning when you pass urine?" },
+      { "id": "uti_q2", "text": "Is your urine cloudy or bloody?" }
+    ]
   },
   {
+    "id": "c_kidney_stone",
     "name": "Kidney Stone",
-    "description": "Severe flank pain, vomiting, painful urination, blood in urine"
+    "description": "Severe flank pain, vomiting, painful urination, blood in urine",
+    "aliases": ["renal colic", "kidney stone", "urolithiasis"],
+    "icd_code": "N20",
+    "common_symptoms": ["severe flank pain", "nausea", "vomiting", "painful urination", "blood in urine"],
+    "red_flags": ["inability to pass urine", "fever with back pain", "sepsis"],
+    "severity_score": 0.7,
+    "urgency": "moderate",
+    "selfcare": ["analgesia", "fluids", "seek ED if severe or with fever"],
+    "escalate_when": ["fever with flank pain", "anuria", "severe uncontrolled pain"],
+    "follow_up_questions": [
+      { "id": "ks_q1", "text": "Is the pain very severe and coming in waves on one side of your back?" },
+      { "id": "ks_q2", "text": "Have you noticed blood in your urine?" }
+    ]
   },
   {
+    "id": "c_dehydration",
     "name": "Dehydration",
-    "description": "Extreme thirst, dizziness, dry mouth, fatigue, dark urine"
+    "description": "Extreme thirst, dizziness, dry mouth, fatigue, dark urine",
+    "aliases": ["dehydration", "fluid loss"],
+    "icd_code": "E86",
+    "common_symptoms": ["extreme thirst", "dizziness", "dry mouth", "fatigue", "dark urine"],
+    "red_flags": ["confusion", "very low urine output", "signs of shock"],
+    "severity_score": 0.65,
+    "urgency": "moderate",
+    "selfcare": ["oral rehydration solutions", "small frequent sips", "seek help if unable to drink"],
+    "escalate_when": ["inability to drink", "decreasing consciousness", "very low urine output"],
+    "follow_up_questions": [
+      { "id": "dehyd_q1", "text": "Are you able to keep fluids down and how much urine are you passing?" },
+      { "id": "dehyd_q2", "text": "Are you feeling dizzy on standing or fainting?" }
+    ]
   },
   {
+    "id": "c_anxiety_attack",
     "name": "Anxiety Attack",
-    "description": "Rapid heartbeat, shortness of breath, trembling, fear, chest tightness"
+    "description": "Rapid heartbeat, shortness of breath, trembling, fear, chest tightness",
+    "aliases": ["anxiety attack", "acute anxiety episode"],
+    "icd_code": "F41.9",
+    "common_symptoms": ["rapid heartbeat", "shortness of breath", "trembling", "fear", "chest tightness"],
+    "red_flags": ["chest pain suggesting cardiac cause", "fainting", "suicidal ideation"],
+    "severity_score": 0.5,
+    "urgency": "moderate",
+    "selfcare": ["breathing techniques", "grounding", "seek support"],
+    "escalate_when": ["chest pain", "fainting", "suicidal thoughts"],
+    "follow_up_questions": [
+      { "id": "anx_q1", "text": "Are you experiencing chest pain or fainting along with anxiety?" },
+      { "id": "anx_q2", "text": "Is this your first episode or have you had similar attacks before?" }
+    ]
   },
   {
+    "id": "c_panic_attack",
     "name": "Panic Attack",
-    "description": "Sudden fear, chest pain, dizziness, tingling, feeling of losing control"
+    "description": "Sudden fear, chest pain, dizziness, tingling, feeling of losing control",
+    "aliases": ["panic attack", "panic episode"],
+    "icd_code": "F41.0",
+    "common_symptoms": ["sudden fear", "chest pain", "dizziness", "tingling", "feeling of losing control"],
+    "red_flags": ["collapse", "chest pain suspicious for heart attack", "suicidal ideation"],
+    "severity_score": 0.6,
+    "urgency": "moderate",
+    "selfcare": ["breathing exercises", "reassurance", "seek emergency care if chest pain severe"],
+    "escalate_when": ["sudden collapse", "severe chest pain", "persistent symptoms"],
+    "follow_up_questions": [
+      { "id": "pan_q1", "text": "Is the chest pain severe or are you fainting?" },
+      { "id": "pan_q2", "text": "Do you have ongoing severe symptoms despite calming techniques?" }
+    ]
   },
   {
+    "id": "c_depression",
     "name": "Depression",
-    "description": "Persistent sadness, fatigue, loss of interest, sleep changes, appetite changes"
+    "description": "Persistent sadness, fatigue, loss of interest, sleep changes, appetite changes",
+    "aliases": ["depression", "major depressive disorder"],
+    "icd_code": "F32",
+    "common_symptoms": ["persistent sadness", "fatigue", "loss of interest", "sleep changes", "appetite changes"],
+    "red_flags": ["active suicidal thoughts", "psychosis", "inability to care for self"],
+    "severity_score": 0.6,
+    "urgency": "high",
+    "selfcare": ["seek mental health support", "talk to a clinician", "safety planning if suicidal ideation present"],
+    "escalate_when": ["suicidal ideation", "self-harm plans", "severe functional decline"],
+    "follow_up_questions": [
+      { "id": "dep_q1", "text": "Have you had thoughts of harming yourself or not wanting to live?" },
+      { "id": "dep_q2", "text": "Are you able to handle day-to-day tasks?" }
+    ]
   },
   {
+    "id": "c_hypertension",
     "name": "Hypertension",
-    "description": "Headache, blurred vision, chest pressure, dizziness, often asymptomatic"
+    "description": "Headache, blurred vision, chest pressure, dizziness, often asymptomatic",
+    "aliases": ["high blood pressure", "hypertension"],
+    "icd_code": "I10",
+    "common_symptoms": ["headache", "blurred vision", "chest pressure", "dizziness", "often no symptoms"],
+    "red_flags": ["very high blood pressure with chest pain or neurological signs"],
+    "severity_score": 0.7,
+    "urgency": "moderate",
+    "selfcare": ["follow antihypertensive regimen", "lifestyle measures", "seek urgent care if severe symptoms"],
+    "escalate_when": ["acute chest pain", "neurological change", "very high readings"],
+    "follow_up_questions": [
+      { "id": "ht_q1", "text": "Have you had very high BP readings or new chest pain or confusion?" },
+      { "id": "ht_q2", "text": "Are you on blood pressure medications and taking them?" }
+    ]
   },
   {
+    "id": "c_diabetes",
     "name": "Diabetes (High Blood Sugar)",
-    "description": "Excessive urination, thirst, fatigue, blurred vision, slow healing wounds"
+    "description": "Excessive urination, thirst, fatigue, blurred vision, slow healing wounds",
+    "aliases": ["diabetes", "type 2 diabetes", "high blood sugar"],
+    "icd_code": "E11",
+    "common_symptoms": ["excessive urination", "increased thirst", "fatigue", "blurred vision", "slow wound healing"],
+    "red_flags": ["signs of diabetic ketoacidosis (vomiting, confusion, rapid breathing)"],
+    "severity_score": 0.7,
+    "urgency": "moderate",
+    "selfcare": ["monitor glucose", "follow medications", "hydration"],
+    "escalate_when": ["vomiting with known diabetes", "confusion", "very high glucose readings"],
+    "follow_up_questions": [
+      { "id": "dm_q1", "text": "Do you have known diabetes and very high or low glucose readings?" },
+      { "id": "dm_q2", "text": "Are you vomiting or confused?" }
+    ]
   },
   {
+    "id": "c_hypoglycemia",
     "name": "Hypoglycemia (Low Blood Sugar)",
-    "description": "Dizziness, sweating, confusion, hunger, shaking"
+    "description": "Dizziness, sweating, confusion, hunger, shaking",
+    "aliases": ["hypoglycemia", "low blood sugar"],
+    "icd_code": "E16.2",
+    "common_symptoms": ["dizziness", "sweating", "confusion", "hunger", "shaking"],
+    "red_flags": ["loss of consciousness", "seizures"],
+    "severity_score": 0.8,
+    "urgency": "high",
+    "selfcare": ["give fast-acting carbohydrate (juice, glucose gel)", "recheck glucose", "seek urgent care if not improving"],
+    "escalate_when": ["unconsciousness", "repeated episodes", "seizures"],
+    "follow_up_questions": [
+      { "id": "hypo_q1", "text": "Do you have a glucometer reading for your current sugar level?" },
+      { "id": "hypo_q2", "text": "Did you take insulin or miss a meal recently?" }
+    ]
   },
   {
+    "id": "c_ear_infection",
     "name": "Ear Infection",
-    "description": "Ear pain, fever, hearing difficulty, fluid drainage, irritability"
+    "description": "Ear pain, fever, hearing difficulty, fluid drainage, irritability",
+    "aliases": ["otitis media", "ear infection"],
+    "icd_code": "H66",
+    "common_symptoms": ["ear pain", "fever", "hearing difficulty", "fluid drainage"],
+    "red_flags": ["high fever", "severe ear pain with neurological signs"],
+    "severity_score": 0.6,
+    "urgency": "moderate",
+    "selfcare": ["analgesia", "warm compresses", "see GP if persistent or severe"],
+    "escalate_when": ["persistent high fever", "severe pain", "ear discharge with systemic illness"],
+    "follow_up_questions": [
+      { "id": "ear_q1", "text": "Is there discharge from the ear or severe loss of hearing?" },
+      { "id": "ear_q2", "text": "Is the pain very severe or is the patient very unwell?" }
+    ]
   },
   {
+    "id": "c_conjunctivitis",
     "name": "Conjunctivitis (Pink Eye)",
-    "description": "Red watery eyes, itching, discharge, irritation, contagious infection"
+    "description": "Red watery eyes, itching, discharge, irritation, contagious infection",
+    "aliases": ["pink eye", "conjunctivitis"],
+    "icd_code": "H10",
+    "common_symptoms": ["red eye", "watery or sticky discharge", "itching", "eye irritation"],
+    "red_flags": ["severe eye pain", "vision loss", "light sensitivity"],
+    "severity_score": 0.25,
+    "urgency": "low",
+    "selfcare": ["cold compresses", "avoid touching eyes", "keep hygiene"],
+    "escalate_when": ["vision changes", "severe pain", "light sensitivity"],
+    "follow_up_questions": [
+      { "id": "conj_q1", "text": "Is your vision affected or do you have severe eye pain?" },
+      { "id": "conj_q2", "text": "Is the discharge thick and sticky or watery?" }
+    ]
   },
   {
+    "id": "c_skin_allergy",
     "name": "Skin Allergy (Dermatitis)",
-    "description": "Red itchy rash, swelling, irritation, dryness, triggered by allergens"
+    "description": "Red itchy rash, swelling, irritation, dryness, triggered by allergens",
+    "aliases": ["dermatitis", "contact dermatitis", "skin allergy"],
+    "icd_code": "L23",
+    "common_symptoms": ["red itchy rash", "swelling", "irritation", "dryness"],
+    "red_flags": ["widespread blistering", "breathing difficulty", "systemic reaction"],
+    "severity_score": 0.3,
+    "urgency": "low",
+    "selfcare": ["avoid trigger", "emollients", "topical steroid if advised"],
+    "escalate_when": ["systemic allergic reaction", "breathing difficulty", "spreading infection"],
+    "follow_up_questions": [
+      { "id": "skin_q1", "text": "Did the rash begin after contact with a new product or plant?" },
+      { "id": "skin_q2", "text": "Is the rash spreading quickly or showing signs of infection?" }
+    ]
   },
   {
+    "id": "c_cellulitis",
     "name": "Cellulitis",
-    "description": "Red swollen skin, warmth, pain, fever, spreading infection"
+    "description": "Red swollen skin, warmth, pain, fever, spreading infection",
+    "aliases": ["cellulitis", "skin infection"],
+    "icd_code": "L03",
+    "common_symptoms": ["red swollen painful skin", "warmth over area", "fever"],
+    "red_flags": ["rapid spread", "necrosis", "systemic sepsis"],
+    "severity_score": 0.8,
+    "urgency": "high",
+    "selfcare": ["seek medical evaluation for antibiotics", "elevate limb if applicable"],
+    "escalate_when": ["rapid spread", "high fever", "signs of sepsis"],
+    "follow_up_questions": [
+      { "id": "cell_q1", "text": "Is the redness spreading quickly or is there pus?" },
+      { "id": "cell_q2", "text": "Do you have a fever or feel generally unwell?" }
+    ]
   },
   {
+    "id": "c_chickenpox",
     "name": "Chickenpox",
-    "description": "Itchy red blisters, fever, rash spreading across body"
+    "description": "Itchy red blisters, fever, rash spreading across body",
+    "aliases": ["varicella", "chickenpox"],
+    "icd_code": "B01",
+    "common_symptoms": ["itchy red blisters", "fever", "rash spreading across body"],
+    "red_flags": ["high fever", "pregnancy complication", "severe infection"],
+    "severity_score": 0.5,
+    "urgency": "moderate",
+    "selfcare": ["isolate", "calamine lotions", "paracetamol for fever"],
+    "escalate_when": ["severe symptoms in pregnancy", "signs of pneumonia", "high fever"],
+    "follow_up_questions": [
+      { "id": "chix_q1", "text": "Are you pregnant or an immunocompromised person?" },
+      { "id": "chix_q2", "text": "Are blisters spreading with high fever?" }
+    ]
   },
   {
+    "id": "c_dengue",
     "name": "Dengue Fever",
-    "description": "High fever, body pain, joint pain, rash, headache behind eyes"
+    "description": "High fever, body pain, joint pain, rash, headache behind eyes",
+    "aliases": ["dengue", "dengue fever"],
+    "icd_code": "A90",
+    "common_symptoms": ["high fever", "body and joint pain", "rash", "headache behind eyes"],
+    "red_flags": ["bleeding", "severe abdominal pain", "shock"],
+    "severity_score": 0.8,
+    "urgency": "high",
+    "selfcare": ["seek medical evaluation", "fluids", "avoid NSAIDs until dengue excluded"],
+    "escalate_when": ["bleeding", "severe abdominal pain", "vomiting", "signs of shock"],
+    "follow_up_questions": [
+      { "id": "deng_q1", "text": "Are you having bleeding from gums, nose, or under the skin?" },
+      { "id": "deng_q2", "text": "Do you have severe abdominal pain or vomiting?" }
+    ]
   },
   {
+    "id": "c_malaria",
     "name": "Malaria",
-    "description": "High fever, chills, sweating, headache, vomiting"
+    "description": "High fever, chills, sweating, headache, vomiting",
+    "aliases": ["malaria"],
+    "icd_code": "B50",
+    "common_symptoms": ["high fever", "chills", "sweating", "headache", "vomiting"],
+    "red_flags": ["severe anemia", "organ dysfunction", "altered consciousness"],
+    "severity_score": 0.85,
+    "urgency": "high",
+    "selfcare": ["seek urgent medical testing and treatment"],
+    "escalate_when": ["altered mental status", "jaundice", "severe anemia"],
+    "follow_up_questions": [
+      { "id": "mal_q1", "text": "Have you recently travelled to a malaria area?" },
+      { "id": "mal_q2", "text": "Do you have very high fever or confusion?" }
+    ]
   },
   {
+    "id": "c_typhoid",
     "name": "Typhoid Fever",
-    "description": "High fever, abdominal pain, headache, weakness, diarrhea or constipation"
+    "description": "High fever, abdominal pain, headache, weakness, diarrhea or constipation",
+    "aliases": ["typhoid fever", "enteric fever"],
+    "icd_code": "A01.0",
+    "common_symptoms": ["high fever", "abdominal pain", "headache", "weakness", "diarrhea or constipation"],
+    "red_flags": ["intestinal perforation", "severe dehydration", "encephalopathy"],
+    "severity_score": 0.8,
+    "urgency": "high",
+    "selfcare": ["seek medical attention for antibiotics and monitoring"],
+    "escalate_when": ["severe abdominal pain", "persistent high fever", "signs of perforation"],
+    "follow_up_questions": [
+      { "id": "typh_q1", "text": "Have you been exposed to contaminated food/water or travelled recently?" },
+      { "id": "typh_q2", "text": "Do you have persistent high fever or severe abdominal pain?" }
+    ]
   },
   {
+    "id": "c_stroke",
     "name": "Stroke",
-    "description": "Facial drooping, slurred speech, sudden weakness on one side, confusion"
+    "description": "Facial drooping, slurred speech, sudden weakness on one side, confusion",
+    "aliases": ["stroke", "cerebrovascular accident", "cva"],
+    "icd_code": "I63",
+    "common_symptoms": ["facial drooping", "slurred speech", "sudden weakness on one side", "confusion"],
+    "red_flags": ["sudden severe neurological deficit", "loss of consciousness"],
+    "severity_score": 0.99,
+    "urgency": "high",
+    "selfcare": ["call emergency services immediately"],
+    "escalate_when": ["any sudden weakness", "facial droop", "severe speech difficulty"],
+    "follow_up_questions": [
+      { "id": "stroke_q1", "text": "Did the symptoms start suddenly and include weakness on one side?" },
+      { "id": "stroke_q2", "text": "Is speech slurred or hard to understand?" }
+    ]
   },
   {
+    "id": "c_heart_attack",
     "name": "Heart Attack",
-    "description": "Chest pain, left arm pain, sweating, shortness of breath, pressure sensation"
+    "description": "Chest pain, left arm pain, sweating, shortness of breath, pressure sensation",
+    "aliases": ["myocardial infarction", "mi", "heart attack"],
+    "icd_code": "I21",
+    "common_symptoms": ["central chest pain", "left arm pain", "sweating", "shortness of breath", "pressure sensation"],
+    "red_flags": ["collapse", "severe crushing chest pain", "loss of consciousness"],
+    "severity_score": 0.98,
+    "urgency": "high",
+    "selfcare": ["call emergency services immediately"],
+    "escalate_when": ["any central crushing chest pain", "radiating to arm/jaw", "fainting"],
+    "follow_up_questions": [
+      { "id": "mi_q1", "text": "Is the chest pain severe, crushing, or radiating to the arm or jaw?" },
+      { "id": "mi_q2", "text": "Are you feeling sweaty, faint, or short of breath?" }
+    ]
   },
   {
+    "id": "c_hyperthyroidism",
     "name": "Hyperthyroidism",
-    "description": "Weight loss, tremors, irritability, rapid heartbeat, heat intolerance"
+    "description": "Weight loss, tremors, irritability, rapid heartbeat, heat intolerance",
+    "aliases": ["hyperthyroidism", "overactive thyroid"],
+    "icd_code": "E05",
+    "common_symptoms": ["weight loss", "tremors", "irritability", "rapid heartbeat", "heat intolerance"],
+    "red_flags": ["thyroid storm signs: fever, tachycardia, altered consciousness"],
+    "severity_score": 0.6,
+    "urgency": "moderate",
+    "selfcare": ["seek endocrine review for testing and treatment"],
+    "escalate_when": ["very high fever with tachycardia", "altered mental status"],
+    "follow_up_questions": [
+      { "id": "hty_q1", "text": "Have you noticed rapid weight loss despite increased appetite?" },
+      { "id": "hty_q2", "text": "Do you have tremors or heat intolerance?" }
+    ]
   },
   {
+    "id": "c_hypothyroidism",
     "name": "Hypothyroidism",
-    "description": "Fatigue, weight gain, cold intolerance, dry skin, constipation"
+    "description": "Fatigue, weight gain, cold intolerance, dry skin, constipation",
+    "aliases": ["hypothyroidism", "underactive thyroid"],
+    "icd_code": "E03",
+    "common_symptoms": ["fatigue", "weight gain", "cold intolerance", "dry skin", "constipation"],
+    "red_flags": ["severe bradycardia", "myxedema coma signs (rare)"],
+    "severity_score": 0.5,
+    "urgency": "low",
+    "selfcare": ["thyroid function testing", "hormone replacement as advised"],
+    "escalate_when": ["severe lethargy", "very low heart rate", "altered consciousness"],
+    "follow_up_questions": [
+      { "id": "lthy_q1", "text": "Have you noticed weight gain and increased tiredness?" },
+      { "id": "lthy_q2", "text": "Are you having cold intolerance or severe constipation?" }
+    ]
   },
   {
+    "id": "c_osteoarthritis",
     "name": "Osteoarthritis",
-    "description": "Joint pain, stiffness, reduced mobility, worse with activity"
+    "description": "Joint pain, stiffness, reduced mobility, worse with activity",
+    "aliases": ["osteoarthritis", "degenerative joint disease"],
+    "icd_code": "M19",
+    "common_symptoms": ["joint pain", "stiffness", "reduced mobility", "worse with activity"],
+    "red_flags": ["sudden severe swelling", "signs of infection in joint"],
+    "severity_score": 0.4,
+    "urgency": "low",
+    "selfcare": ["exercise", "weight management", "analgesia", "physiotherapy"],
+    "escalate_when": ["sudden severe joint swelling", "fever", "inability to use joint"],
+    "follow_up_questions": [
+      { "id": "oa_q1", "text": "Is pain worse with activity and better with rest?" },
+      { "id": "oa_q2", "text": "Is there significant joint swelling or redness?" }
+    ]
   },
   {
+    "id": "c_rheumatoid_arthritis",
     "name": "Rheumatoid Arthritis",
-    "description": "Joint swelling, stiffness, fatigue, pain in multiple joints"
+    "description": "Joint swelling, stiffness, fatigue, pain in multiple joints",
+    "aliases": ["rheumatoid arthritis", "ra"],
+    "icd_code": "M06",
+    "common_symptoms": ["joint swelling", "stiffness", "fatigue", "pain in multiple joints"],
+    "red_flags": ["rapid joint destruction", "systemic features", "high fever"],
+    "severity_score": 0.6,
+    "urgency": "moderate",
+    "selfcare": ["rheumatology review", "DMARDs as advised"],
+    "escalate_when": ["severe systemic symptoms", "very high inflammatory markers"],
+    "follow_up_questions": [
+      { "id": "ra_q1", "text": "Do you have symmetrical joint swelling and morning stiffness?" },
+      { "id": "ra_q2", "text": "Are you experiencing significant fatigue and reduced function?" }
+    ]
   },
   {
+    "id": "c_vertigo",
     "name": "Vertigo",
-    "description": "Spinning sensation, dizziness, balance issues, nausea"
+    "description": "Spinning sensation, dizziness, balance issues, nausea",
+    "aliases": ["vertigo", "vestibular dizziness"],
+    "icd_code": "H81",
+    "common_symptoms": ["spinning sensation", "dizziness", "balance issues", "nausea"],
+    "red_flags": ["focal neurological signs", "severe persistent vomiting", "sudden hearing loss"],
+    "severity_score": 0.6,
+    "urgency": "moderate",
+    "selfcare": ["sit/lie down during attacks", "vestibular rehab if recurrent"],
+    "escalate_when": ["focal weakness", "double vision", "severe ongoing vomiting"],
+    "follow_up_questions": [
+      { "id": "vert_q1", "text": "Is the room spinning and do you feel nauseous or vomiting?" },
+      { "id": "vert_q2", "text": "Is there any hearing loss or weakness on one side?" }
+    ]
   },
   {
+    "id": "c_meningitis",
     "name": "Meningitis",
-    "description": "Severe headache, neck stiffness, fever, light sensitivity"
+    "description": "Severe headache, neck stiffness, fever, light sensitivity",
+    "aliases": ["meningitis", "inflammation of meninges"],
+    "icd_code": "G00",
+    "common_symptoms": ["severe headache", "neck stiffness", "fever", "photophobia", "vomiting"],
+    "red_flags": ["loss of consciousness", "seizures", "confusion", "bulging fontanelle in infants"],
+    "severity_score": 0.95,
+    "urgency": "high",
+    "selfcare": ["seek emergency assessment immediately"],
+    "escalate_when": ["neck stiffness with fever", "seizures", "confusion"],
+    "follow_up_questions": [
+      { "id": "men_q1", "text": "Do you have a very stiff neck or difficulty touching chin to chest?" },
+      { "id": "men_q2", "text": "Are you unusually sleepy or confused?" }
+    ]
   }
 ]
